@@ -1,0 +1,25 @@
+body {
+    position: relative;
+    background-color: rgb(143, 64, 239);
+    width: 100%;
+    margin: 0;
+    font-size: medium;
+    overflow: hidden;
+}
+
+.dm-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1em;
+    border-radius: 1em;
+    width: 20em;
+    height: 31em;
+}
+
+.message-container {
+    background-color: rgba(212, 235, 255, 0.7);
+    border-radius: 1em 1em 0 0;
+    width: inherit;
+    height: 80%;
+}
