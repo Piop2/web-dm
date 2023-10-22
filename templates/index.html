@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <title>Direct Message Client</title>
         <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}"/>
     </head>
     <body>
-        <div class="dm-box">
-            <div class="message-container">
-
+        <div id="dm-box">
+            <div id="msg-container">
             </div>
-            <input type="text" placeholder="text here"/>
+            <label id="input-label">
+                <input
+                        id="input-box"
+                        type="text"
+                        placeholder="연결중..."
+                        onkeyup="sendMessage()"
+                        disabled/>
+            </label>
         </div>
+
+        <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='index.js')}}"></script>
     </body>
 </html>
-

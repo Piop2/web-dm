@@ -1,25 +1,109 @@
 body {
     position: relative;
-    background-color: rgb(143, 64, 239);
+    background-color: #3a3a3a;
     width: 100%;
     margin: 0;
     font-size: medium;
-    overflow: hidden;
 }
 
-.dm-box {
+#dm-box {
     position: absolute;
+    display: grid;
+    grid-template-rows: 90% 10%;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 1em;
-    border-radius: 1em;
-    width: 20em;
-    height: 31em;
+    width: 22em;
+    height: 34em;
+    border-radius: 0.5em;
+    background-color: white;
 }
 
-.message-container {
-    background-color: rgba(212, 235, 255, 0.7);
-    border-radius: 1em 1em 0 0;
-    width: inherit;
-    height: 80%;
+#input-label {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: inherit;
+
+    &>#input-box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(225, 225, 225);
+        border-radius: 1em;
+        margin: unset;
+        border: unset;
+        padding: 0 5%;
+        width: 85%;
+        height: 80%;
+    }
+}
+
+#msg-container {
+    position: relative;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #2f3542;
+        border-radius: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: rgba(128, 128, 128, 0.75);
+        border-radius: 1rem;
+    }
+}
+
+.message {
+    display: flex;
+    margin: 2% 1%;
+
+    &.msg-left {
+        flex-direction: row;
+        left: 0;
+    }
+
+    &.msg-right {
+        flex-direction: row-reverse;
+        right: 0;
+
+        &>div {
+            background-color: #dcdcdc;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 2%;
+    }
+
+    &.msg-right>div, &.msg-left>div {
+        white-space: normal;
+        width: fit-content;
+        max-width: 75%;
+        padding: 3%;
+        border: #dcdcdc solid 1px;
+        border-radius: 0.5rem;
+    }
+
+    &.system {
+        height: fit-content;
+        justify-content: center;
+        background-color: rgba(169, 169, 169);
+        opacity: 0.6;
+        font-size: small;
+        border-radius: 1rem;
+
+        &>div {
+            text-align: center;
+        }
+    }
 }
