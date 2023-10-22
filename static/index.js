@@ -1,4 +1,4 @@
-const socket = io("ws://localhost:5000")
+const socket = io("ws://192.168.43.202:5000")
 let latestText = ""
 
 socket.on('disconnect', function(){
@@ -19,8 +19,14 @@ socket.on("enable_message", () =>{
 
 socket.on("message", (data) => {
     const container = document.getElementById("msg-container")
+    let taskScroll = false;
+    if (container.offsetHeight + container.scrollTop === container.scrollHeight) {
+        taskScroll = true
+    }
     addMessageElement(container, data["message"], "left", data["isSystem"])
-    scrollToEnd(container)
+    if (taskScroll) {
+        scrollToEnd(container)
+    }
 })
 
 function sendMessage() {
