@@ -1,13 +1,6 @@
 const socket = io("ws://localhost:5000")
 let latestText = ""
 
-socket.on('connect', function(){
-    const inputBox = document.getElementById("input-box")
-    inputBox.disabled = false
-    inputBox.value = latestText
-    inputBox.placeholder = "메시지 보내기..."
-})
-
 socket.on('disconnect', function(){
     const inputBox = document.getElementById("input-box")
     inputBox.disabled = true
@@ -15,6 +8,14 @@ socket.on('disconnect', function(){
     inputBox.value = ""
     inputBox.placeholder = "연결중..."
 })
+
+socket.on("enable_message", () =>{
+    const inputBox = document.getElementById("input-box")
+    inputBox.disabled = false
+    inputBox.value = latestText
+    inputBox.placeholder = "메시지 보내기..."
+})
+
 
 socket.on("message", (data) => {
     const container = document.getElementById("msg-container")
