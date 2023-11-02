@@ -1,4 +1,5 @@
-const socket = io("ws://192.168.43.202:5000")
+import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+const socket = io("ws://127.0.0.1:5000")
 let latestText = ""
 
 socket.on('disconnect', function(){
@@ -10,10 +11,12 @@ socket.on('disconnect', function(){
 })
 
 socket.on("enable_message", () =>{
+    const container = document.getElementById("msg-container")
     const inputBox = document.getElementById("input-box")
     inputBox.disabled = false
     inputBox.value = latestText
     inputBox.placeholder = "메시지 보내기..."
+    scrollToEnd(container)
 })
 
 
